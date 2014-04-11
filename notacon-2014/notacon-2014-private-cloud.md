@@ -163,7 +163,11 @@ The bad
 
 * some ancient limitations
 * network performance
-* udp only (tcp support is experimental)
+* weak native crypto
+  * use openvpn
+  * gssapi work in progress
+* udp only
+  * tcp data transfer is experimental
 * linux: out-of-tree linux kernel module
 * NAT pain
 
