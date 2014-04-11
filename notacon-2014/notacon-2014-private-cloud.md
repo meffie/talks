@@ -47,6 +47,11 @@ Who uses OpenAFS?
 * Government
 * Universities
 
+CERN
+====
+
+![scale=0.3](images/cern-computer-center.jpg)
+
 Some Background
 ===============
 
@@ -58,11 +63,11 @@ Some Background
 File Servers
 ============
 
-* An OpenAFS installation requires one or more servers for file storage.
-* These may be physical or virtual machines (Solaris, Linux, BSD)
-* Not all the servers for a site need to be running the same architecture and operating system,
-* Each file storage servers should have one or more unix filesystem partitions for data and AFS-metadata storage.
-* The files stored in these partitions are stored in a special format and cannot be accessed directly.
+* One or more servers for file storage: Solaris, Linux, BSD
+* These may be physical or virtual machines
+* Not all the servers for a site need to be running the same architecture and operating system
+* Each file storage servers should have one or more unix filesystem partitions for data and AFS-metadata storage
+* The files stored in these partitions are stored in a special format and cannot be accessed directly
 
 A cell by any other name
 ========================
@@ -91,7 +96,9 @@ Kerberos
 OpenAFS Database Servers
 ========================
 
-* Install openafs server packages (apt, yum, etc) and start the configuration servers
+Step 2: Configuration servers
+
+* Install openafs server packages (apt, yum) and start the configuration servers
 * Protection "database" maintains the list of users and groups for access control
 * Volume Location "database" maintains the list of file servers and file sets (volumes)
 
@@ -102,6 +109,8 @@ OpenAFS Database Servers
 OpenAFS Fileservers
 ===================
 
+Step 3: File servers
+
 * Real or virtual machines can be used
 * Files and metadata are stored in dedicated partitions (up to 255 of them)
 * More file servers can be added as more space is needed
@@ -110,9 +119,13 @@ OpenAFS Fileservers
 OpenAFS client
 ==============
 
+Step 4: Clients
+
 * Linux, MacOS, Windows, iPhone clients are available
 * Packaging varies by client
 * Clients will also need the Kerberos client software, if authenticated access is needed.
+
+![scale=0.2](images/folder.jpg)
 
 Read/Write Files
 ================
@@ -152,6 +165,7 @@ The bad
 * network performance
 * udp only (tcp support is experimental)
 * linux: out-of-tree linux kernel module
+* NAT pain
 
 Questions
 =========
