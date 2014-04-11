@@ -121,7 +121,7 @@ OpenAFS client
 
 Step 4: Clients
 
-* Linux, MacOS, Windows, iPhone clients are available
+* Linux, MacOS, Windows clients are available
 * Packaging varies by client
 * Clients will also need the Kerberos client software, if authenticated access is needed.
 
