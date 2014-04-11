@@ -7,6 +7,7 @@ Introduction
 ============
 
 * Michael Meffie, software engineer
+* mmeffie@sinenomine.net
 * Sine Nomine Associates
   * IT Systems Engineering
   * Commercial support for open source projects
@@ -76,6 +77,11 @@ Kerberos
 
 Step 1: You need an authentication service.
 
+![scale=1.0](images/cerberus.jpg)
+
+Kerberos
+========
+
 * MIT Kerberos, Active Directory, Heimdal
 * A secure location is needed to run the Key Distribution Center
 * Clocks need to be in sync (ntp)
@@ -87,7 +93,7 @@ OpenAFS Database Servers
 
 * Install openafs server packages (apt, yum, etc) and start the configuration servers
 * Protection "database" maintains the list of users and groups for access control
-* Volume Locaction "database" maintains the list of file servers and file sets (volumes)
+* Volume Location "database" maintains the list of file servers and file sets (volumes)
 
 > Note:
 > The database services are replicated for reliability. Normally different instances
@@ -106,4 +112,49 @@ OpenAFS client
 
 * Linux, MacOS, Windows, iPhone clients are available
 * Packaging varies by client
+* Clients will also need the Kerberos client software, if authenticated access is needed.
+
+Read/Write Files
+================
+
+* Access controls determine who has access to files
+* Multiple users can write at the same time, but just like linux, the last writer wins
+* Files are organized into sets (called volumes)
+* The file sets (volumes) can be moved from server to server
+  * even while users are *writing* to files
+
+Read-Only Files
+===============
+
+* An important and common use case: files written once
+* This includes files such as programs, media, experimental data
+* OpenAFS provides read-only file replication for these types of files
+* Files are groups into sets (called volumes)
+* The read-only file sets are atomically distributed to multiple fileservers
+* Clients will fail over to other servers as needed
+
+The good
+========
+
+* open source implementation
+* wide range of platforms supported
+* global namespace
+* location transparency
+* client-side caching
+* read-only replication
+* access control lists
+* kerberos integration
+
+The bad
+=======
+
+* some ancient limitations
+* network performance
+* udp only (tcp support is experimental)
+* linux: out-of-tree linux kernel module
+
+Questions
+=========
+
+![scale=0.5](images/andy.jpg)
 

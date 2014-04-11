@@ -19,7 +19,7 @@ reallyclean: clean
 	rm -f $(title).pdf
 
 clean:
-	rm -f *.aux *.log *.nav *.out *.snm *.tex *.toc *.vrb
+	rm -f *.aux *.log *.nav *.out *.snm *.tex *.toc *.vrb *.bak
 
 show: $(title).pdf
 	evince $(title).pdf
