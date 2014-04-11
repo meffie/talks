@@ -1,0 +1,25 @@
+.PHONY: all clean reallyclean noclean
+
+title=notacon-2014-private-cloud
+
+all: $(title).pdf clean
+
+all_noclean: $(title).pdf
+
+$(title).pdf: $(title).md Makefile
+	echo "\documentclass[t, ignorenonframetext, xcolor=svgnames]{beamer}"   >  $(title).tex
+	echo "\usetheme{SineNomine}"                                            >> $(title).tex
+	echo ""                                                                 >> $(title).tex
+	snark-beamup $(title).md                                                >> $(title).tex
+	# run pdflatex twice for toc
+	pdflatex $(title).tex
+	pdflatex $(title).tex
+
+reallyclean: clean
+	rm -f $(title).pdf
+
+clean:
+	rm -f *.aux *.log *.nav *.out *.snm *.tex *.toc *.vrb
+
+show: $(title).pdf
+	evince $(title).pdf
