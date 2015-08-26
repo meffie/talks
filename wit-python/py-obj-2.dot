@@ -1,0 +1,20 @@
+
+digraph G {
+    rankdir=LR;
+    subgraph cluster0 {
+        x;
+        y;
+        z;
+        label="Names";
+        color=white;
+    }
+    subgraph cluster1 {
+        object0 [shape=box,label="id: 452984\ntype: int\nvalue: 1000"]
+        object1 [shape=box,label="id: 922415\ntype: str\nvalue: 'hello'"];
+        label="Objects";
+        color=white;
+    }
+    z->object1;
+    x->object0;
+    y->object1;
+}

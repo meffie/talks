@@ -1,0 +1,23 @@
+Introduction to Python workshop.
+
+This will be a series of hands-on assignments for the students to learn the
+basics of python. To try to make things interesting, we will write a program to
+get data from the US census using the web rest api.  A free developer key is
+required. It is sent to a valid email address. (I have one, but sharing it
+would probably be against the TOS.)
+
+See:
+
+    http://www.census.gov/developers/
+    http://www.census.gov/data/developers/about/terms-of-service.html
+    (Request a key image)
+
+Example API Request:
+
+    # List population by state
+    wget -O - "http://api.census.gov/data/2010/sf1?key=${KEY}&get=P0010001,NAME&for=state:*"
+
+
+    # List population and housing vacant
+    wget -o /dev/null -O - "http://api.census.gov/data/2010/sf1?key=${KEY}&get=P0010001,H0030003,NAME&for=state:*"
+
