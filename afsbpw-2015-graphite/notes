@@ -1,0 +1,55 @@
+Title: Large Scale OpenAFS performance monitoring with Graphite
+Date: August 20, 2015
+
+Outline
+
+1. High level description of graphite
+  a) Background and Architecture
+  b)
+
+
+2. Feeding OpenAFS metrics to graphite
+  a) OpenAFS stat data gathering
+  b) The metric namespace tree
+  c) types of metrics: counters, gauges, etc
+  d) carbon configuraion
+
+3. Examples
+
+
+Important points
+
+(in no particular order)
+* open source, widely used
+* graphite scales via clustering
+* loads of tools that work with graphite, e.g. grafana
+
+metrics
+* easy to feed data
+* show types of afs metrics
+* hierachy of metrics, metric paths
+
+carbon config
+* data collection interval should match retention config!
+* the aggregation method needs to match the data type
+
+whisper
+* cmd line tools to dump raw data
+
+graphite
+* web rest api for rendering
+* functions!
+
+afs specifics....
+
+??
+
+
+References
+
+The Architecture of Open Source Applications: Graphite
+http://www.aosabook.org/en/graphite.html
+
+Tools That Work With Graphite
+http://graphite.readthedocs.org/en/latest/tools.html
+
