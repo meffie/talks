@@ -441,20 +441,6 @@ OpenOffice Automation
     doc.save(myfile, filter_name="MS Excel 97")
     doc.close()
 
-And now for something completely different.
-===========================================
-
-    import this
-    The Zen of Python, by Tim Peters
-    
-    Beautiful is better than ugly.
-    Explicit is better than implicit.
-    Simple is better than complex.
-    Complex is better than complicated.
-    Flat is better than nested.
-    Sparse is better than dense.
-    Readability counts.
-
 Part 3: Workshop
 ================
 
@@ -475,12 +461,14 @@ Census API
 The following URL will return the population totals of each state and the
 corresponding state name:
 
-    http://api.census.gov/data/2010/sf1?key=...&get= P0010001,NAME&for=state:*
+    http://api.census.gov/data/2010/sf1?
+       key=...&get= P0010001,NAME&for=state:*
 
 The following URL will return the population total for Oregon and the
 corresponding state name:
 
-    http://api.census.gov/data/2010/sf1?key=...&get= P0010001,NAME&for=state:41
+    http://api.census.gov/data/2010/sf1?
+       key=...&get= P0010001,NAME&for=state:41
 
 The API returns its responses in JSON format.
 
@@ -500,12 +488,47 @@ Task 2
 
 * Write a function to read your key from a file.
 
+Task 2 (answer)
+===============
+
+    import os
+    
+    def read_api_key():
+        filename = os.path.join(os.getenv("HOME"),
+                   ".census-api-key")
+        with open(filename) as keyfile:
+            key = keyfile.read().strip()
+        return key
+
+    def main():
+        key = read_api_key()
+        print(key)
+
+    main()
+
 Task 3
 ======
 
 * Write a python program that will request a url and print
   the response text.
-* HINT: use urllib.request
+* Hint: use urllib.request
+
+Task 3 (answer)
+===============
+
+    import os
+    import urllib.request
+    ...
+    def request_url():
+        url = "http://www.example.org/"
+        request = urllib.request.urlopen(url)
+        text = request.read().decode()
+        return text
+    def main():
+        key = read_api_key()
+        text = request_url()
+        print(text)
+    main()
 
 Task 4
 ======
@@ -514,10 +537,47 @@ Task 4
   state in 2010.
 * Print the json result
 
+Task 4 (answer)
+===============
+    ....
+    import urllib.request
+    ....
+    def request_census_data(key):
+        url = "http://api.census.gov/data/2010/sf1?"+
+              "key={0}&"+
+              "get=P0010001,NAME&for=state:*".format(key)
+        request = urllib.request.urlopen(url)
+        text = request.read().decode()
+        return text
+    def main():
+        key = read_api_key()
+        text = request_census_data(key)
+        print(text)
+    main()
+
 Task 5
 ======
 
 * Convert the json to a python list!
+
+Task 5 (answer)
+===============
+
+    ...
+    import json
+    ....
+    def request_census_data(key):
+        ...
+        request = urllib.request.urlopen(url)
+        text = request.read().decode()
+        data = json.loads(text)
+        return data
+    def main():
+        key = read_api_key()
+        data = request_census_data(key)
+        print(data)
+    main()
+
 
 Task 6
 ======
@@ -525,4 +585,36 @@ Task 6
 * Print the names of the ten states which have the largest
   population!
 
+
+Task 6 (answer)
+===============
+
+    ....
+    def get_states(data):
+        states = []
+        for population,state,fips in data[1:]:
+            row = (int(population), state)
+            states.append(row)
+        return sorted(states, reverse=True)
+    def main():
+        key = read_api_key()
+        data = request_census_data(key)
+        states = get_states(data)
+        print(states[:10])
+    main()
+
+
+And now for something completely different.
+===========================================
+
+    import this
+    The Zen of Python, by Tim Peters
+    
+    Beautiful is better than ugly.
+    Explicit is better than implicit.
+    Simple is better than complex.
+    Complex is better than complicated.
+    Flat is better than nested.
+    Sparse is better than dense.
+    Readability counts.
 
