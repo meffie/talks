@@ -302,8 +302,8 @@ Example: Jumble
 ===============
 
 > Task:
-> Solve a word puzzle. You are given a list of commons words in which
-> the letters are scrambled. Find the original words.
+> Solve a word puzzle. You are given a list of common words with
+> the letters scrambled. Find the original words.
 
 Some examples:
 
@@ -328,7 +328,7 @@ Then, sort the letters of each word to generate an index,
         acek    cake
         ehosu   house
 
-Sort the letters of the puzzle word and then search for the line(s)j:
+Sort the letters of the puzzle word and then search for the line(s)
 matching the signature.
 
         palep ---> aelpp ---> apple
@@ -347,16 +347,16 @@ Example: Jumble
 ===============
 
 The next and primary challenge is to find a way to sort the letters of a word.
-Here's an idiomatic perl one-liner;
+Here's an idiomatic perl one-liner,
 
     $ echo apple | perl -lane 'print sort split //'
     aelpp
 
-Let's use this to generate the keys for each word;
+Let's use this to generate the keys for each word,
 
     $ cat words | perl -lane 'print sort split //' > keys
 
-Next, combine the keys and the words into an index file;
+Next, combine the keys and the words into an index file,
 
     $ paste -d: keys words > index
 
