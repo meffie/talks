@@ -322,46 +322,76 @@ contains the words,
         cake
         house
 
-Sort the letters of each word to generate an index,
+Then, sort the letters of each word to generate an index,
 
         aelpp   apple
         acek    cake
         ehosu   house
 
-Sort the letters of the puzzle word, and then search for the line(s)
+Sort the letters of the puzzle word and then search for the line(s)j:
 matching the signature.
 
-        kace ----> acek ----> cake
+        palep ---> aelpp ---> apple
 
 Example: Jumble
 ===============
 
-The first challenge is to sort the letters of a word. Here's an idiomatic perl
-one-liner,
+The '/usr/share/dict/words' file contains a dictionary of words for the current
+locale.  To make this example simpler, let's filter out the proper nouns,
+possessives, and accented characters. (We use the locale "all" variable to
+configure grep to use plain ASCII.)
 
-      echo example | perl -lane 'print sort split //'
-
-To generate the index with a pipeline,
-
-      cat words |
-      perl -lane 'print sort split //' |
-      paste -d' ' - words > index
-
-Tip: We can use /usr/share/dict/words for our word list.
+    $ LC_ALL=C grep '^[a-z]*$' /usr/share/dict/words > words
 
 Example: Jumble
 ===============
 
-Finally, a two-line function to solve the puzzles.
+The next and primary challenge is to find a way to sort the letters of a word.
+Here's an idiomatic perl one-liner;
 
-    unjumble() {
-        key=$(echo $1 | perl -lane 'print sort split //')
-        grep "^$key " index | cut -d' ' -f2
-    }
+    $ echo apple | perl -lane 'print sort split //'
+    aelpp
 
-    unjumble kace
-    (output:) cake
+Let's use this to generate the keys for each word;
 
+    $ cat words | perl -lane 'print sort split //' > keys
+
+Next, combine the keys and the words into an index file;
+
+    $ paste -d: keys words > index
+
+Example: Jumble
+===============
+
+We make a function to generate the key, and then use the key to search
+the index;
+
+    $ key() { echo $1 | perl -lane 'print sort split //'; }
+    $ key palep
+    aelpp
+    
+    $ grep "^aelpp:" index
+    aelpp:apple
+    $ grep "^$(key palep):" index | cut -d: -f2
+    apple
+    
+    $ unjumble() { grep "^$(key $1):" index | cut -d: -f2; }
+    $ unjumble palep
+    apple
+
+Example: Jumble
+===============
+
+Summary
+
+    $ LC_ALL=C grep '^[a-z]*$' /usr/share/dict/words > words
+    $ cat words | perl -lane 'print sort split //' > keys
+    $ paste -d: keys words > index
+    $ key() { echo $1 | perl -lane 'print sort split //'; }
+    $ unjumble() { grep "^$(key $1):" index | cut -d: -f2; }
+    
+    $ unjumble pelpa
+    apple
 
 Part 3: Variables, Flow, Functions, and more
 ============================================
