@@ -513,18 +513,11 @@ Sourcing is a way to include variable and function definitions
 into the current shell.
 
     cat myvars
-    >> MYVAR=123
+    output: MYVAR=123
 
     . myvars
     echo $MYVAR
-    >> 123
-
-
-Part 4: Writing Scripts
-=======================
-
-![scale=0.6](images/heres-a-nickel-kid-last-panel.png)
-
+    output: 123
 
 About scripts
 =============
@@ -553,8 +546,14 @@ A typical script layout:
     <call-the-functions>
 
 
-Example: Quest
-==============
+Part 4: Writing Scripts
+=======================
+
+![scale=0.6](images/heres-a-nickel-kid-last-panel.png)
+
+
+Quest
+=====
 
 > Task:
 > In this example we will be writing a small text based adventure
@@ -583,25 +582,25 @@ Idea for Rooms
 
 Concept: Use files and cat for the location descriptions.
 
-1. Create a directory called 'map' and subdirs 0 to 3.
-2. In each sub dir create a file called 'desc' with a brief room description.
-3. Set the variable 'room' to 0.
-4. Show the room description with cat map/$room/desc.
-5. Change room number and show the room descriptions with cat.
+1. Create a directories called rooms/{0,1,2}.
+2. In each directory, create a file called 'desc' with a brief room description.
+3. Set the variable 'room' to 0, then show the room description with cat rooms/$room/desc.
 
 Idea for Navigatation
 =====================
 
-Concept: Use a small file that lists directions and the next room.
+Concept: Use a small file that lists the exits of each room.
 
-1. Create a file called exits in each map/(room).
-2. Put lines in the exit files that show the next room for directions.
-3. Use grep and cut to get the next room for a given direction.
-
-Example:
-
-    north 1
-    east 2
+        cat >map <<EOF
+        0:north:1
+        1:south:0
+        1:east:2
+        2:west:1
+        EOF
+        room=0
+        direction=north
+        grep "^$room:$direction" map | cut -d: -f3
+        1
 
 Handling user input
 ===================
@@ -614,55 +613,173 @@ Handling user input
 Handling user input
 ===================
 
-        while read words
+        #!/bin/bash
+        room=0
+        quest_look() { cat rooms/$room/desc; }
+        quest_look
+        while read verb noun
         do
-            case $words
-            quit)
+            case $verb in
+            q|quit)
                 break
                 ;;
             *)
-                echo "you said $words"
+                echo "I don't understand $verb $noun."
                 ;;
             esac
         done
 
-Coding look
-===========
-
-1. Use a variable to keep track of the current room.
-2. Write a function to display the description of the current
-
-
-Coding navigation
-=================
+Navigation
+==========
 
 1. Write a function to navigate to the next room.
 2. Show the new room description as we move from room to room.
-3. Add new verbs in the main loop.
+3. Add new verbs in the main loop to move.
+
+
+Navigation
+==========
+
+    quest_move() {
+        if [ -z "$1" ]; then
+            echo "Which way?"
+        else
+            next=$(grep "^$room:$1" map | cut -d: -f3)
+            if [ -z "$next" ]; then
+                echo "You can't go that way."
+            else
+                room=$next
+                quest_look
+            fi
+        fi
+    }
+
+Navigation
+==========
+
+    ...
+        go|move|walk|run)
+            quest_move $noun
+            ;;
+        n|s|e|w|north|south|east|west) # implied go
+            quest_move $verb
+            ;;
+    ...
 
 Idea for items
 ==============
 
 Everything in unix is a file.
 
-1. Create an 'items' directory for each room.
-2. Create an 'items' directory for the character.
+1. Create an 'items' directory for each room, e.g., rooms/0/items
+2. Create an 'items' directory for the character, e.g., items
 3. Add items by creating files for each item. The name of the file is the short
    name of the item, and the contents is the description.
 4. Use cat to display the item descriptions for the rooms.
 5. Use mv to take and drop items.
 
-Coding items
-============
+Items
+=====
+
+        mkdir items
+        mkdir rooms/{0..2}/items
+        echo "brass lamp"           > rooms/0/items/lamp
+        echo "a set of silver keys" > rooms/0/items/keys
+        echo "a dusty old book"     > rooms/1/items/book
+        echo "a wand with the word xyzzy inscribed on it"
+           > rooms/1/items/wand
+
+Items
+=====
 
 1. Write functions to take and drop items.
-2. Write a function to list your inventory.
+2. Write a function to show your inventory.
 3. Add new verbs in the main loop.
+
+Take item
+=========
+
+    quest_take() {
+        if [ -z "$1" ]; then
+            echo "Take what?"
+        else
+            if [ ! -f rooms/$room/items/$1 ]; then
+                echo "The $1 is not here."
+            else
+                mv rooms/$room/items/$1 items
+                echo "You now have $(cat items/$1)."
+            fi
+        fi
+    }
+
+Drop item
+=========
+
+    quest_drop() {
+        if [ -z "$1" ]; then
+            echo "Drop what?"
+        else
+            if [ ! -f items/$1 ]; then
+                echo "You do not have $1."
+            else
+                mv items/$1 rooms/$room/items
+                echo "You dropped $(cat rooms/$room/items/$1)."
+            fi
+        fi
+    }
+
+Show items
+==========
+
+    quest_inventory() {
+        if [ $(ls items | wc -l) -eq 0 ]; then
+            echo "You do not have anything."
+        else
+            echo "You have,"
+            cat items/*
+        fi
+    }
+
+
+Items verbs
+===========
+
+        ...
+        take|pickup)
+            quest_take $noun
+            ;;
+        drop|leave)
+            quest_drop $noun
+            ;;
+        show|list|inventory)
+            quest_inventory
+            ;;
+        ...
+
 
 Add some magic
 ==============
 
-1. If the char has the wand and says 'xyzzy', teleport back to room 0.
+1. Teleport if the char has the wand and says 'xyzzy'.
+
+Say the magic word
+==================
+
+    quest_magic() {
+        if [ ! -f char/items/wand -o "$room" -eq 0 ]; then
+            echo "Nothing seems to happen."
+        else
+            echo "In a great puff of smoke,"
+            echo "you are transported to another place!"
+            room=0
+            quest_look
+        fi
+    }
+    ...
+      xyzzy)
+          quest_magic
+          ;;
+    ...
 
 EOF
 ===
