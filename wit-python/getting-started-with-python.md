@@ -195,7 +195,7 @@ Dictionaries
     example['age']  -> 29
     example['weight'] -> KeyError!
     
-    for key in example.keys():
+    for key in example:
         print(key, example[key])
 
 Functions
@@ -216,6 +216,12 @@ Imports
 
     import os
     os.uname() -> ('Linux', 'mantis', ...
+    
+    from os import uname        # shortcut
+    uname() -> ('Linux', 'mantis', ...
+    
+    from os import uname as u   # alias
+    u()
 
 Classes
 =======
