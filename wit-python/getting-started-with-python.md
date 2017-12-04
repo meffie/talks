@@ -484,7 +484,7 @@ The API returns its responses in JSON format.
 Task 1
 ======
 
-* Request a developer key from www.census.gov/devlopers.
+* Request a developer key from www.census.gov/developers.
 * See the "request a key" on the terms of service page.
 * You will receive a key in your email in about 5 minutes.
 * Save your key in text file, we will use it later.
