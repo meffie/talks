@@ -129,30 +129,31 @@ OpenAFS 1.8.0
 
 What's new in 1.8.0
 
-* Many, many internal code cleanups
+* Many internal code cleanups
 * Better support for non-DES encryption types
 * Pthreaded vlserver, ptserver, and most utilities
 * Rx atomics and other Rx improvements
-* Do not truncate server log files on startup
+* Server log files are no longer truncated on startup
 * Remove Linux 2.2 and 2.4 support
-* and may more
-
-See NEWS
+* and many more... see NEWS
 
 OpenAFS 1.8.1 upcoming
 ======================
 
-* Fix for crash when cache-bypass in enabled
+* Fix for crash when cache by-pass is enabled
 * More useful library exports for external tools
 * Build fix for broken GNU libtool on Solaris
 
 master branch
 =============
 
-* rxgk phase 1 patches under review
-* sockaddr conversion
-* backlog of changes and fixes to be reviewed
+Patches under review for future releases:
 
+* GSSAPI based rx security class (rxgk) phase 1
+* Linux fast-path patches (dvhint)
+* More LWP to pthread conversion (scout, xstats)
+* Sockaddr conversion of IPv4 addresses
+* and many more... See https://gerrit.openafs.org
 
 EOF
 ===
