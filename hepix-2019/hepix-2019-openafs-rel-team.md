@@ -1,0 +1,168 @@
+Title: OpenAFS Release Team Report
+Author: Michael Meffie
+Date: March 25, 2019
+
+OpenAFS Release Team
+====================
+
+* Weekly meetings via jabber on Fridays
+  - jabber: release-team@conference.openafs.org
+  - email: release-team@openafs.org
+* Regular participants
+  - Stephan Wiesand - stable series release manager
+  - Benjamin Kaduk
+  - Mark Vitale
+  - Michael Meffie
+* Notes posted to openafs-devel@openafs.org
+* Please join us to discuss OpenAFS releases
+
+OpenAFS Contributors
+====================
+
+Commit authors since 1.8.0:
+
+    Anders Kaseorg   Karl Behler
+    Andrew Deason    Marcio Barbosa
+    Benjamin Kaduk   Mark Vitale
+    Ben Kaduk        Michael Lass
+    Caitlyn Marko    Michael Meffie
+    Cheyenne Wills   Pat Riehecky
+    Christof Hanke   Perry Ruiter
+    Damien Diederen  Peter Foley
+    Ian Wienand      Seth Forshee
+    Jeffrey Altman   Stephan Wiesand
+    Joe Gorse
+
+1.8 Stable Series
+========================
+
+* 1.8.x "new" stable
+* Platform support
+* Security fixes
+* Bug fixes
+* Selected improvements from the master branch
+* Changes are pulled up from master branch
+
+1.6 Stable Series
+========================
+
+* 1.6.x "old" stable continues to be supported
+* End-of-life yet to be declared
+* Platform support
+* Security fixes
+* Neccessary bug fixes
+* Changes are pulled up from 1.8.x releases
+
+Security Advisories
+===================
+
+Security Release
+* 1.8.2
+* 1.6.23
+
+* OPENAFS-SA-2018-001
+  * Volume-level data replacement via unauthenticated butc (backups) connections
+* OPENAFS-SA-2018-002
+  * Information leakage from uninitialized RPC output variables
+* OPENAFS-SA-2018-003
+  * Limit unbounded strings in RPCs
+
+OpenAFS 1.8.1
+=============
+
+* OpenAFS 1.8.1
+  * 64-bit ARM client support
+  * Fixes for FreeBSD
+  * Regression fixes
+    * Fix shared library exports
+    * Fix volume callbacks when running vos release regression
+    * Fix panic when cache bypass is enabled regression
+    * Fix vldb-check regression
+  * and more ... see NEWS
+* OpenAFS 1.8.1.1
+  * Support Linux 4.18
+
+OpenAFS 1.8.3pre1
+==================
+
+* 1.8.3 Release Candidate announced March 2019
+* Support Linux 4.20, 5.0
+* Support macOS 10.14 "Mojave"
+* Fix vos status missing packet counters regression (13421)
+* Fix panic while flushing cache items (13503)
+* Fix panic during cache initialization (13307)
+* Do not send garbage in the RX userStatus field (13332)
+
+OpenAFS 1.8.3pre1 (continued...)
+==================
+
+* Fix bogus cache entries due to a full cache partition, etc. (13443)
+* Assorted fixes to avoid segmentation faults (13329 13372)
+* Fix volume server crash (13337)
+* And more ... see NEWS
+
+Upcoming release OpenAFS 1.6.24
+===============================
+
+* To support linux 4.20 and 5.0
+* To include same fixes as 1.8.3
+* To be released after 1.8.3
+
+master Branch
+=============
+
+Gerrits in review or already merged:
+
+* gcc 8 warning fixes
+* Static analyzer warning fixes
+  * Thank you Pat Riehecky
+* More conversion to POSIX threads
+* Improved Solaris 11.4 vfs integration
+* Linux native mount points
+* Core rxgk (phase 1)
+* And more... see gerrit.openafs.org
+
+> Note: 1.9.x release series proposed
+
+rxgk security class
+===================
+
+* Primary authors of OpenAFS rxgk implementation
+ * Ben Kuduk
+ * Andrew Deason
+* Modern crypto for rx traffic
+* Code for "phase 1" available in Gerrit code review
+  * Gerrit topic: 'rxgk-phase1'
+  * Most changes ready to be merged
+
+rxgk Phase 1 status
+===================
+
+* Core rxgk security class
+* OpenAFS code base integration:
+  * Build system changes to support rxgk
+  * Superuser identification support
+  * asetkey and rxdbug changes
+  * New pts/vos arguments
+  * Error handling changes in OpenAFS
+* Initial lab testing and verification
+* Phase 1 Limitations:
+  * limited to server-to-server, vos/pts to server
+  * limited to printed tokens
+  * no token negotiation via GSSNegotiate
+
+Get Involved
+============
+
+* Review code at gerrit.openafs.org
+* Test pre-releases
+* Send patches to gerrit.openafs.org
+* Discuss on openafs-devel@openafs.org
+
+Thanks
+======
+
+Thank you, on behalf of the OpenAFS Release Team.
+
+* https://www.openafs.org
+* https://gerrit.openafs.org
