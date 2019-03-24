@@ -24,14 +24,13 @@ Commit authors since 1.8.0:
     Anders Kaseorg   Karl Behler
     Andrew Deason    Marcio Barbosa
     Benjamin Kaduk   Mark Vitale
-    Ben Kaduk        Michael Lass
-    Caitlyn Marko    Michael Meffie
-    Cheyenne Wills   Pat Riehecky
-    Christof Hanke   Perry Ruiter
-    Damien Diederen  Peter Foley
-    Ian Wienand      Seth Forshee
-    Jeffrey Altman   Stephan Wiesand
-    Joe Gorse
+    Caitlyn Marko    Michael Lass
+    Cheyenne Wills   Michael Meffie
+    Christof Hanke   Pat Riehecky
+    Damien Diederen  Perry Ruiter
+    Ian Wienand      Peter Foley
+    Jeffrey Altman   Seth Forshee
+    Joe Gorse        Stephan Wiesand
 
 1.8 Stable Series
 ========================
@@ -47,25 +46,11 @@ Commit authors since 1.8.0:
 ========================
 
 * 1.6.x "old" stable continues to be supported
-* End-of-life yet to be declared
+* No end-of-life target date at this time
 * Platform support
 * Security fixes
 * Neccessary bug fixes
 * Changes are pulled up from 1.8.x releases
-
-Security Advisories
-===================
-
-Security Release
-* 1.8.2
-* 1.6.23
-
-* OPENAFS-SA-2018-001
-  * Volume-level data replacement via unauthenticated butc (backups) connections
-* OPENAFS-SA-2018-002
-  * Information leakage from uninitialized RPC output variables
-* OPENAFS-SA-2018-003
-  * Limit unbounded strings in RPCs
 
 OpenAFS 1.8.1
 =============
@@ -75,12 +60,24 @@ OpenAFS 1.8.1
   * Fixes for FreeBSD
   * Regression fixes
     * Fix shared library exports
-    * Fix volume callbacks when running vos release regression
-    * Fix panic when cache bypass is enabled regression
+    * Fix volume callbacks regression when running vos release
+    * Fix regression (panic) when cache bypass is enabled
     * Fix vldb-check regression
   * and more ... see NEWS
 * OpenAFS 1.8.1.1
   * Support Linux 4.18
+
+Security Advisories
+===================
+
+Security Releases: 1.8.2, 1.6.23
+
+* OPENAFS-SA-2018-001
+  * Volume-level data replacement via unauthenticated butc (backups) connections
+* OPENAFS-SA-2018-002
+  * Information leakage from uninitialized RPC output variables
+* OPENAFS-SA-2018-003
+  * Limit unbounded strings in RPCs
 
 OpenAFS 1.8.3pre1
 ==================
@@ -111,26 +108,28 @@ Upcoming release OpenAFS 1.6.24
 master Branch
 =============
 
-Gerrits in review or already merged:
+Changes under code review or already merged:
 
 * gcc 8 warning fixes
 * Static analyzer warning fixes
   * Thank you Pat Riehecky
 * More conversion to POSIX threads
-* Improved Solaris 11.4 vfs integration
+* Improved Solaris 11.4 VFS integration
 * Linux native mount points
 * Core rxgk (phase 1)
 * And more... see gerrit.openafs.org
 
-> Note: 1.9.x release series proposed
+> Note:
+> Development release series under consideration
+> for rxgk snapshots.
 
 rxgk security class
 ===================
 
 * Primary authors of OpenAFS rxgk implementation
- * Ben Kuduk
+ * Benjamin Kaduk (MIT Sponsored)
  * Andrew Deason
-* Modern crypto for rx traffic
+* Phase 1 provides rxgk for intra-dbserver communications
 * Code for "phase 1" available in Gerrit code review
   * Gerrit topic: 'rxgk-phase1'
   * Most changes ready to be merged
@@ -157,12 +156,11 @@ Get Involved
 * Review code at gerrit.openafs.org
 * Test pre-releases
 * Send patches to gerrit.openafs.org
-* Discuss on openafs-devel@openafs.org
+* Discuss on the mail lists:
+  * openafs-info@openafs.org
+  * openafs-devel@openafs.org
 
 Thanks
 ======
 
 Thank you, on behalf of the OpenAFS Release Team.
-
-* https://www.openafs.org
-* https://gerrit.openafs.org
