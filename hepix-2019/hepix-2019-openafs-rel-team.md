@@ -9,7 +9,7 @@ OpenAFS Release Team
   - jabber: release-team@conference.openafs.org
   - email: release-team@openafs.org
 * Regular participants
-  - Stephan Wiesand - stable series release manager
+  - Stephan Wiesand, Release Manager - DESY
   - Benjamin Kaduk
   - Mark Vitale
   - Michael Meffie
@@ -116,30 +116,42 @@ Changes under code review or already merged:
 * More conversion to POSIX threads
 * Improved Solaris 11.4 VFS integration
 * Linux native mount points
-* Core rxgk (phase 1)
+* Core RXGK implementation
 * And more... see gerrit.openafs.org
 
 > Note:
 > Development release series under consideration
-> for rxgk snapshots.
+> for RXGK snapshots.
 
-rxgk security class
+RXGK security class
 ===================
 
-* Primary authors of OpenAFS rxgk implementation
- * Benjamin Kaduk (MIT Sponsored)
- * Andrew Deason
-* Phase 1 provides rxgk for intra-dbserver communications
+* GSSAPI based security class for RXGK
+  * Modern crypto for RX traffic
+  * Authentication service framework
+* RFC drafts by Simon Wilkinson
+  * https://datatracker.ietf.org/doc/html/draft-wilkinson-afs3-rxgk
+  * https://datatracker.ietf.org/doc/html/draft-wilkinson-afs3-rxgk-afs
+
+RXGK security class for OpenAFS
+===============================
+
+* Phase 1 provides RXGK for intra-dbserver communications
+* Developers
+  * Ben Kaduk
+  * Andrew Deason
+* Underlying RFC3961 implementation
+  * Simon Wilkinson
 * Code for "phase 1" available in Gerrit code review
   * Gerrit topic: 'rxgk-phase1'
-  * Most changes ready to be merged
+  * Most changes merged to master branch
 
-rxgk Phase 1 status
-===================
+RXGK security class for OpenAFS
+===============================
 
-* Core rxgk security class
+* Core RXGK security class
 * OpenAFS code base integration:
-  * Build system changes to support rxgk
+  * Build system changes to support RXGK
   * Superuser identification support
   * asetkey and rxdbug changes
   * New pts/vos arguments
