@@ -1,0 +1,48 @@
+
+\usetheme{default}
+
+%\definecolor{SineNomineLightBlue}{RGB}{184,223,243}
+%\usecolortheme[named=SineNomineLightBlue]{structure}
+%\usecolortheme[named=SlateGray]{structure}
+\usecolortheme[named=darkgray]{structure}
+
+% rounded boxes
+\useinnertheme[shadow]{rounded}
+
+% Put info in the footer
+%\useoutertheme{infolines}
+
+\setbeamersize{text margin left=1.2cm}
+\setbeamersize{text margin right=1.2cm}
+
+% Get rid of the nav icons
+\setbeamertemplate{navigation symbols}{}
+
+% Bullet point style
+\setbeamertemplate{items}[circle]
+
+% Our company logo and decor
+\setbeamertemplate{background}{%
+  \includegraphics[width=\paperwidth]{sna-background}%
+}%
+
+% Place the frame title below the banner
+\setbeamertemplate{headline}{%
+    \begin{beamercolorbox}{beamer color}%
+      \vspace{1.2cm}%
+%      \insertnavigation{\paperwidth}%
+%      \vspace{0.4cm}%
+    \end{beamercolorbox}%
+}%
+
+\setbeamertemplate{footline}{%
+   \begin{beamercolorbox}{beamer color}%
+      \vspace{0.2cm}%
+      \hfill
+      \insertshorttitle
+      \hspace{0.4cm}%
+      \insertframenumber{} of \inserttotalframenumber{}%
+      \hspace{0.6cm}%
+      \vspace{0.2cm}%
+   \end{beamercolorbox}%
+}%
