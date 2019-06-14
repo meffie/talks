@@ -22,9 +22,8 @@
 \setbeamertemplate{items}[circle]
 
 % Our company logo and decor
-\setbeamertemplate{background}{%
-  \includegraphics[width=\paperwidth]{sna-background}%
-}%
+\pgfdeclareimage[width=\paperwidth,height=\paperheight]{background}{sna-background.png}
+\usebackgroundtemplate{\pgfuseimage{background}}
 
 % Place the frame title below the banner
 \setbeamertemplate{headline}{%
@@ -46,3 +45,6 @@
       \vspace{0.2cm}%
    \end{beamercolorbox}%
 }%
+
+\usepackage{caption}
+\captionsetup{labelformat=empty,labelsep=none}

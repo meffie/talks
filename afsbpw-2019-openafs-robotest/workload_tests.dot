@@ -1,0 +1,6 @@
+digraph Tests {
+  node [shape=record, fontname="Arial", style="filled", fillcolor="aliceblue"];
+  edge [arrowhead=none];
+
+  workload -> { basic, dir, find, hugefile, mountpoint, pag, readonly, stress};
+}

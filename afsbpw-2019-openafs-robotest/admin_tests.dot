@@ -1,0 +1,7 @@
+digraph Tests {
+  node [shape=record, fontname="Arial", style="filled", fillcolor="aliceblue"];
+  edge [arrowhead=none];
+
+  admin -> { bosserver, ptserver, volume};
+  volume -> { backup, clone, create, dump, move, release, restore };
+}

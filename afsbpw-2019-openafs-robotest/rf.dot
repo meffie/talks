@@ -1,0 +1,16 @@
+digraph R {
+  /*rankdir="LR" */
+  node [shape=record, fontname="Arial", style="filled", fillcolor="aliceblue"]
+  edge [arrowhead=none]
+
+  A [label="OpenAFS Test Cases", fillcolor="cornflowerblue"]
+  B [label="Robot Framework"]
+  C [label="Standard Libraries\l - BuiltIn\l - Operating System\l", width=2.5]
+  D [label="External Libraries\l - OpenAFS Keywords\l", fillcolor="cornflowerblue", width=2.5]
+  F [label="syscalls\lcommands\l"]
+  G [label="Reports", fillcolor="white"]
+  H [label="System Under Test\l - cache manager\l - commands\l - servers\l"]
+
+  A -> B -> {C, D} -> F -> H
+  {rank=same; B; G}
+}
