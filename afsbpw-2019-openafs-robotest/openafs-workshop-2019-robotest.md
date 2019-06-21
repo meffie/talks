@@ -8,7 +8,7 @@ date: June 21, 2019
 
 ![](images/robotframework.org.png){width=70%}
 
-# Tests suites OpenAFS
+# Tests suites
 
 * OpenAFS unit tests
     * c-based **unit tests**
@@ -39,7 +39,7 @@ date: June 21, 2019
 * General purpose acceptance test automation framework
 * Tester oriented
 * Well documented and active community
-* Orginally developed at Nokia
+* Originally developed at Nokia
 * Open-source and active since 2008
 * First Robot Framework conference held in 2019
 
@@ -87,6 +87,81 @@ date: June 21, 2019
         Input Username    ${USERNAME}
         ...
 
+# Test Data
+
+* Tests are defined in **tables**
+* Various formats supported
+    * plain text `.robot` (most commonly used)
+    * TSV format (spreadsheet)
+    * reStructedText with embedded plain text
+    * early versions supported HTML format
+* Robot Framework IDE: `RIDE`
+
+# Test Data
+
+* PASS or FAIL, there is no *skip*
+* Tags used to categorize tests
+* Tests must be *independent*
+* Test data are *not* scripts
+* Logic and loops belong in the **test libraries**
+
+# Standard libraries
+
+* BuiltIn
+* Collections
+* DateTime
+* Dialogs
+* OperatingSystem
+* Process
+* Remote
+* Screenshot
+* String
+* XML
+
+# External Libraries
+
+* Android
+* AnywhereLibrary (Web testing)
+* AppiumLibrary (Adriod/iOS app testing)
+* Archive
+* AutoItLibrary (Windows GUI testing)
+* CncLibrary (CNC milling machines)
+* Database
+* Debug
+* Diff
+* Django
+* Eclipse
+* Faker (generate test data)
+
+# External Libraries ...
+
+* FTP
+* HTTP
+* iOS
+* ImageHorizon
+* JavaFXLibrary
+* MongoDB
+* Mainframe3270
+* MQTT
+* NcclientLibrary
+* Rammbock (Generic network protocol testing)
+* RemoteSwingLibrary
+* RESTinstance
+
+# External Libraries ...
+
+* SapGuiLibrary
+* Selenium2Screenshots
+* Selenium (Browser testing)
+* SikuliLibrary (GUI testing)
+* SSHLibrary
+* SudsLibrary (SOAP web services testing)
+* SwingLibrary (Swing GUI)
+* TestFX (Java TestFX)
+* TFTP
+* WhiteLibrary (Windows GUI testing)
+* Watir (web testing)
+
 # Robot Framework
 
 ![](rf.png)
@@ -97,7 +172,7 @@ date: June 21, 2019
 * Pure python module
 * Supports Python 2 and Python 3
 * BSD License
-* Github: openafs-contrib/robotframework-openafslibrary
+* `https://github.com/openafs-contrib/robotframework-openafslibrary`
 * Installable with `pip`
 
         pip install robotframework-openafslibrary
