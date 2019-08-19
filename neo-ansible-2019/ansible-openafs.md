@@ -58,7 +58,7 @@ Elevator pitch
 * OpenAFS dbservers; one or three
 * OpenAFS fileservers; one up to 255
 * OpenAFS clients; one or more
-    ** kernel module: afs filesystem driver
+    * kernel module: afs filesystem driver
 
 # ansible leaning curve
 
@@ -97,10 +97,10 @@ Some things to move this along for now.
 # challenges
 
 * OpenAFS and Kerberos are not so common, so no ansible modules
-    ** resort to shell commands for now
+    * resort to shell commands for now
 * Supporting old OpenAFS versions requires different setup process
 * We dont know ansible
-    ** some trial and error while learning
+    * some trial and error while learning
 * The cell "role"
 * The build from source process
 * How to publish multi-role repo with ansible-galaxy?
@@ -108,11 +108,11 @@ Some things to move this along for now.
 # tips
 
 * Have an easy way to create and nuke guests
-    ** with proper dns lookup by hostname
-    ** avoid dns loops
-    ** reuse mac addresses to avoid filling dhcp leases
+    * with proper dns lookup by hostname
+    * avoid dns loops
+    * reuse mac addresses to avoid filling dhcp leases
 * Study roles in github
-    ** Hadoop roles were helpful for me
+    * Hadoop roles were helpful for me
 * Use variables for indirection
 * Use -vv, -vvv, -vvvv and debug tasks
 * Always provide defaults
@@ -127,10 +127,10 @@ Some things to move this along for now.
 * no variable namespacing
 * host variables vs non-host variables
 * ansible "role" name
-    ** weird sports metaphor?
-    ** yaml fragment included *once*
-    ** not a library, not a function (except when it is)
-    ** kind of a template?
+    * weird sports metaphor?
+    * yaml fragment included *once*
+    * not a library, not a function (except when it is)
+    * kind of a template?
 
 # Future
 
