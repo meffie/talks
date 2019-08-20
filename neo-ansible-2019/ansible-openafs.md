@@ -7,12 +7,12 @@ date: August 19, 2019
 # Intro
 
 * Principal Software Engineer at Sine Nomine Associates
-* We do enterprise grade commercial support for OpenAFS
-* This talk is about our experiences in going from 0 to 60 with Ansible
-
-Roles:
-
-https://github.com/openafs-contrib/ansible-openafs
+* Sine Nomine Associates
+    * Engineering services and support
+    * Enterprise grade commercial support for OpenAFS
+* This talk: our experiences in going from 0 to 60 with Ansible
+* Ansible Roles:
+    https://github.com/openafs-contrib/ansible-openafs
 
 # OpenAFS
 
