@@ -27,9 +27,9 @@ Elevator pitch
 # OpenAFS
 
 * Distributed, caching, network filesystem
-    ** aggressive file caching (callbacks)
-    ** uniform paths
-    ** read-only replication
+    * aggressive file caching (callbacks)
+    * uniform paths
+    * read-only replication
 * Clients for solaris, linux, BSDs, macos, windows
 * Servers normally run on linux, BSD, linux
 * CMU Research project in late 80's
