@@ -1,0 +1,10 @@
+--- hello.c.orig	2020-04-29 16:24:01.374044716 -0400
++++ hello.c	2020-04-29 16:24:27.526365768 -0400
+@@ -2,6 +2,6 @@
+ 
+ int main(int argc, char *argv[])
+ {
+-    printf("Hello world!\n");
++    printf("Howdy world!\n");
+     return 0;
+ }
