@@ -119,11 +119,11 @@ Default workspace is `$HOME/rpmbuild`.
 1. Hello World shell script
 2. Hello World compiled binary
 3. Rebuilding and Patching
+4. Setting up a package repository
 
 # Learn More
 
 * Use `mock` for pristine builds
-* Use `createrepo` to make package repositories
 * Read the **RPM Packaging Guide**
 
         https://rpm-packaging-guide.github.io/

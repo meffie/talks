@@ -1,0 +1,5 @@
+[example]
+name=Example repo
+baseurl=http://dr01.example.com/
+enabled=1
+gpgcheck=0
