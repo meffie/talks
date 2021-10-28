@@ -1,0 +1,45 @@
+---
+title: Building KVM virtual machines quickly with virt-builder and cloud-init
+subtitle: Canton Linux Enthusiasts
+author: Michael Meffie
+date: October 28, 2021
+theme: Madrid
+---
+
+# Objectives
+
+Show how to quickly create local kvm guests with pre-built images.
+
+* vagrant on Linux
+* cloud-init NoCloud data source
+* virt-builder
+
+# Vagrant
+
+* HashCorp tool for spinning up guests.
+* Supports a variety of providers
+* Linux provider is experimental, but works
+* Search for libvirt provider boxes
+* Do not install vagrant with apt or yum!
+* Ruby based
+
+# cloud-init
+
+* Widely used for depoying images on cloud providers
+* Many images available online
+* Boots quickly
+* No root passwords in cloud-init images
+* Data is injected on first boot using link-local addresses
+* NoCloud option available for regulare libvirt/kvm setup
+
+# cloud-init NoCloud
+
+# virt-builder
+
+todo
+
+# Demo virt-up
+
+Tool based on virt-builder.
+
+
