@@ -10,8 +10,8 @@ theme: Madrid
 
 Show how to quickly create local kvm guests with pre-built images.
 
-* vagrant on Linux
-* cloud-init NoCloud data source
+* vagrant
+* cloud-init
 * virt-builder
 
 # Vagrant
@@ -32,14 +32,39 @@ Show how to quickly create local kvm guests with pre-built images.
 * Data is injected on first boot using link-local addresses
 * NoCloud option available for regulare libvirt/kvm setup
 
-# cloud-init NoCloud
+# cloud-init
+
+* Download a cloud-init enabled image
+* Create a virtual cdrom disk with the cloud-init meta-data
+* Create a guest with the disk attached
+* cloud-init will use the data from attached disk
+* See kvm-install-vm shell script
+
+# cloud-init
+
+    $ cat meta-data
+    instance-id: iid-local01;
+    local-hostname: cloudimg;
+
+    $ cat user-data
+    #cloud-config
+    password: passw0rd
+    chpasswd: { expire: False }
+    ssh_pwauth: True
+
+    $ genisoimage -output seed.iso
+                  -volid cidata
+                  -joliet
+                  -rock user-data meta-data
+
 
 # virt-builder
 
-todo
+* virt-builder - download and customize image
+* virt-sysprep - edit images clones
+* virt-up - virt-builder/virt-sysprep wrapper
 
-# Demo virt-up
+# Demos
 
-Tool based on virt-builder.
-
-
+* kvm-install-vm
+* virt-up
