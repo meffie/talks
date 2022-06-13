@@ -14,71 +14,51 @@ abstract:
     testing scenarios.
 ---
 
+![](images/molecule.png)
+
 Ansible Molecule
 ----------------
 
 * Ansible Molecule is the standard framework for testing Ansible roles and
   playbooks
 
-* Easily spinup a local "infrastructure" for testing
+* Easily spinup local "infrastructures" for testing roles and playbooks
 
-* Plugins are available to support a variety virtualization providers and test
-  frameworks
-
-* This talk is an intro to Molecule and how it can be leveraged
-  for OpenAFS development and testing
-
-* todo: molecule logo
+* How to leverage Molecule for OpenAFS development and testing
 
 Molecule Scenario
 -----------------
 
-* Create one or more instances; containers or virtual machines
+* Create one or more instances (containers or virtual machines)
 
-* Run a playbook
+* Run an Ansible playbook to create an infrastructure
 
-* Verification
+* Verify
 
 * Cleanup and destroy instances
-
-* todo: actions diagrams
 
 Scenario configuration
 ----------------------
 
-* Each scenario consists of a `molecule.yml` file and a set of playbooks.
+* Each scenario consists of a `molecule.yml` file and a set of playbooks
 
-* The `molecule.yml` specifies everthing needed to create the local
-  infratructure and verification
+* The `molecule.yml` specifies everthing needed to create the infrastructure
+  and to verify
 
+* Instances are created/destroyed by driver plugins or by custom playbooks
 
-molecule.yml
-------------
+* Verfication is performed by verfier plugins or a custom playbook
 
-    ---
-    dependency:
-      name: galaxy
-    driver:
-      name: vagrant
-    platforms:
-      - name: "afs"
-        box: "generic/alma8"
-        groups:
-          - afs_test
+Drivers
+-------
 
-molecule.yml (continued)
-------------------------
+![](molecule-drivers.png)
 
-    provisioner:
-      name: ansible
-      inventory:
-        group_vars:
-          afs_test:
-            afs_realm: "EXAMPLE.COM"
-            afs_cell: "example.com"
-    verifier:
-      name: robotframework
-      enabled: true
+Verification plugins
+--------------------
+
+* todo: verifiers logos
+
 
 OpenAFS Ansible Collection
 --------------------------
@@ -119,23 +99,6 @@ OpenAFS Installation methods
   - source tarball
 
 * Installed versions and methods my vary by instance
-
-
-Driver plugins
---------------
-
-* Instances are created by driver plugins or by a playbook.
-
-* Unmanaged instances supported by the default driver
-
-* todo: driver logos
-
-Verification plugins
---------------------
-
-* Verfication is performed by verfier plugins or a playbook.
-
-* todo: verifiers logos
 
 Getting started
 ---------------

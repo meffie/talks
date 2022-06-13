@@ -17,6 +17,19 @@ TODO
 
 * put a report here
 
+OpenAFS Release Team Meetings
+-----------------------------
+
+* Every Thursday at 12:00 Eastern via Jabber
+
+* Agenda:
+  * Changes for OpenAFS Stable
+  * Changes for OpenAFS 1.9.x/master
+
+* Logs:
+
+    https://conference.openafs.org/release-team@conference.openafs.org/
+
 OpenAFS Buildbot
 ----------------
 
