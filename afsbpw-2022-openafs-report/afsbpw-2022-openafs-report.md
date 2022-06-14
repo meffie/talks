@@ -1,9 +1,6 @@
 ---
 title: OpenAFS Status Report
-authors:
- - Ben Kaduk, OpenAFS Guardian
- - Stephan Wiesand, OpenAFS Release Manager
- - Michael Meffie, OpenAFS Release Team
+author: Michael Meffie, OpenAFS Release Team
 date: June 14, 2022
 abstract:
   - Updates on work that has been done for the OpenAFS stable release branches,
@@ -24,6 +21,10 @@ Objectives
 
 OpenAFS Release Team Meetings
 -----------------------------
+
+* Stephan Wiesand, OpenAFS Release Manager
+
+* Ben Kaduk, OpenAFS Guardian
 
 * Every Thursday at 12:00 noon Eastern via Jabber
 
