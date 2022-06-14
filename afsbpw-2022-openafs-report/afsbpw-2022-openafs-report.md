@@ -44,23 +44,24 @@ Gerrit
 
     https://wiki.openafs.org/devel/GitDevelopers/
 
-* Changes for master should be based on the current master branch and pushed
-  as gerrit changes
+* Changes for master should be based on the current master branch
 
-* Changes for stable must be submitted stacks based on 1.8.x
+* Changes for stable must be submitted as stacks based on 1.8.x
   * changes must already exist on the master branch
   * limited refactoring patches may be accepted to allow for cleaner backports
-  * please coordinate with the Release Team before submitting to stable branch
+  * please coordinate with the Release Team before submitting to stable branch on gerrit
 
 Buildbot
 --------
 
-* buildbot.openafs.org is hosted by MIT
-  - Performs test builds of each gerrit submission
+* Performs test builds of each gerrit submission
+  - buildbot.openafs.org is hosted by MIT
+  - Community provided builders for various platforms
 
 * Upgraded to Buildbot 3.5.0 in 2022
-  - Configuration is Ansible managed now.
+  - Configuration is Ansible managed now
   - New builder names to distinguish gerrit triggered from nightlies
+  - https://github.com/openafs-contrib/afsbotcfg
 
 * New contributed builders in 2022
   - openSUSE 15
@@ -76,6 +77,7 @@ Recent OpenAFS Releases
 * 1.8.8    July, 2021
 * 1.8.8.1  December, 2021
 * 1.8.8.2/1.8.9  In progress
+* Next Stable Series (perhaps 1.10)
 
 OpenAFS 1.8.8
 -------------
