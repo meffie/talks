@@ -19,15 +19,46 @@ abstract:
 Ansible Molecule
 ----------------
 
-* Ansible Molecule is the standard framework for testing Ansible roles and
+
+* Ansible is an open source IT automation engine that automates provisioning,
+  configuration management
+
+* Molecule is the standard framework for testing Ansible roles and
   playbooks
 
 * Easily spinup local "infrastructures" for testing roles and playbooks
 
-* How to leverage Molecule for OpenAFS development and testing
+* How can we make it easier for people to get OpenAFS up and running
+  by leveraging Ansible and Molecule?
 
 Molecule Scenario
 -----------------
+
+* Key concept in molecule
+
+* Defines the number and type of platforms and how to create them
+
+* Defines the Ansible inventory (groups and variables)
+
+* Specifies the Ansible playbook to setup the instances
+
+* Defines the verification method
+
+
+Scenario configuration
+----------------------
+
+* Each scenario consists of a `molecule.yml` file and a set of playbooks
+
+* The `molecule.yml` specifies everything needed to create the infrastructure
+  and to verify
+
+* Instances are created/destroyed by driver plugins or by custom playbooks
+
+* Verification is performed by verifier plugins or a custom playbook
+
+Molecule Test Cycle
+-------------------
 
 * Create one or more instances (containers or virtual machines)
 
@@ -37,18 +68,6 @@ Molecule Scenario
 
 * Cleanup and destroy instances
 
-Scenario configuration
-----------------------
-
-* Each scenario consists of a `molecule.yml` file and a set of playbooks
-
-* The `molecule.yml` specifies everthing needed to create the infrastructure
-  and to verify
-
-* Instances are created/destroyed by driver plugins or by custom playbooks
-
-* Verfication is performed by verfier plugins or a custom playbook
-
 Drivers
 -------
 
@@ -57,37 +76,44 @@ Drivers
 Verification plugins
 --------------------
 
-* todo: verifiers logos
+![](molecule-verifiers.png)
+
+Molecule commands
+----------------
+
+    test         Run full create/verify/destroy cycle.
+
+    list         List status of instances.
+    create       Start the instances.
+    converge     Configure instances
+    login        Log in to one instance with ssh.
+    verify       Run automated tests against instances.
+    destroy      Destroy the instances.
+
+See molecule --help for the complete list.
 
 
 OpenAFS Ansible Collection
 --------------------------
 
-* MIT Kerberos KDC and workstation roles
+A set of Ansible Roles and Modules to deploy OpenAFS.
 
-* OpenAFS Client and Server roles
+* MIT Kerberos KDC and workstation Roles
 
-* OpenAFS modules (tasks)
+* OpenAFS Client and Server Roles
 
-* Example playbooks
+* OpenAFS Modules (tasks)
+
+* Example Playbooks
 
 * Distributed via github and Ansible Galaxy
 
-Converge playbook
------------------
+* Automatically installed by molecule
 
-* Import OpenAFS Collection
-
-* Install and setup Kerberos KDC and workstations
-
-* Install OpenAFS clients and servers
-
-* Configure clients and servers
-
-* Setup top-level volumes
-
-OpenAFS Installation methods
+OpenAFS Installation Methods
 ----------------------------
+
+OpenAFS Ansible Collection supports a variety of installation methods.
 
 * Install with package manager
 
@@ -99,6 +125,49 @@ OpenAFS Installation methods
   - source tarball
 
 * Installed versions and methods my vary by instance
+
+Molecule Converge Playbook
+--------------------------
+
+* Import OpenAFS Collection
+
+* Install and configure Kerberos, generate keys
+
+* Install and configure OpenAFS clients, db servers, fileservers
+
+* Create and mount top-level volumes
+
+* Create initial users and groups
+
+Robot Framework Verification
+----------------------------
+
+On instances in the test group:
+
+* Install Robot Framework
+
+* Install required test libraries
+
+* Download Robot Framework test cases (robot files)
+
+* Run specified test cases
+
+* Download report and logs
+
+Molecule Challenges
+-------------------
+
+* Molecule documentation is limited.
+  * Offset by lots of online material.
+
+* Duplication of yaml in `molecule.yml` files
+  * Base configuration files can help
+  * Possible to generate files with templates (e.g. Jinja2)
+
+* Driver/Platforms coupling makes it harder to create reusable scenarios
+
+* login command is currently broken (version 3.6.1)
+
 
 Getting started
 ---------------
@@ -113,11 +182,10 @@ Getting started
 
 * Run molecule
 
-
 Demo
 ----
 
-    $ sudo apt-get install git python3 python3-venv python3-pip
+    $ sudo apt-get install python3 python3-venv python3-pip
     $ python3 -m pip install --user cookiecutter
     $ cookiecutter \
         --directory cookiecutter/testcell-scenario \
@@ -129,17 +197,33 @@ Demo
     $ . venv/bin/activate
     (venv) $ pip3 install -r requirements.txt
     (venv) $ molecule test
-    ... creates instances, creates realm and cell, runs verification, cleanup
 
+Acknowledgements
+----------------
+
+Many thanks
+
+* Ralf Brunckhorst
+* Cheyenne Wills
+* Mark Vitale
+* Marc Schmitt, aka risson
 
 More Info
 ---------
 
-* Ansible Molecule
+Ansible Molecule
+
   https://molecule.readthedocs.io/en/latest/
 
-* OpenAFS Ansible Collection
+OpenAFS Ansible Collection
+
   https://openafs-ansible-collection.readthedocs.io/en/latest/
 
-* OpenAFS RobotTest
+OpenAFS RobotTest
+
   https://openafs-robotest.readthedocs.io/en/latest/index.html
+
+Questions?
+----------
+
+Thank you
