@@ -15,4 +15,5 @@ preview: all
 	evince $(title).pdf
 
 show: all
-	impressive --transition $(transition) $(title).pdf
+	#impressive --transition $(transition) $(title).pdf
+	evince $(title).pdf
