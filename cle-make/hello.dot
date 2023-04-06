@@ -1,0 +1,8 @@
+digraph G {
+    "hello" -> "main.o"
+    "hello" -> "greeting.o" [label="Link"]
+    "main.o" -> "main.c" [label="Compile"]
+    "greeting.o" -> "greeting.c" [label="Compile"]
+    "main.o" -> "greeting.h"
+    "greeting.o" -> "greeting.h"
+}
