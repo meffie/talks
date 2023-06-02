@@ -9,6 +9,9 @@ abstract:
     planned future work.
 ---
 
+
+
+
 Objectives
 ----------
 
@@ -18,6 +21,15 @@ Objectives
 
 * Status of planned future work
 
+Google Summer of Code 2022
+--------------------------
+
+* OpenAFS Participated in Goggle Summer of Code 2022
+  - Arnie Jhingran: Stress test harness
+  - Virkram Rajsitpal: Reverse Index lookup
+  - https://www.openafs.org/gsoc/2022.html
+
+* Not participating in 2023, planning to apply for 2024
 
 OpenAFS Release Team Meetings
 -----------------------------
@@ -82,10 +94,8 @@ Platforms
 
 * FreeBSD 12.3 support
 
-OpenAFS 1.8.9
--------------
-
-Highights
+OpenAFS 1.8.9 - Highights
+-------------------------
 
 * Reject negative inputs in the filesever FetchData RPC. (Previously, negative
   inputs resulted in the volume being taken offline.)
@@ -101,10 +111,8 @@ Highights
 * Red Hat RPMs: defer loading the OpenAFS kernel module until it is needed.
 
 
-OpenAFS 1.8.10pre1
-------------------
-
-Platforms
+OpenAFS 1.8.10pre1 - Platforms
+------------------------------
 
 * Apple macOS 13 "Ventura" support
 
@@ -115,10 +123,8 @@ Platforms
 * AIX 7 support
 
 
-OpenAFS 1.8.10pre1
-------------------
-
-Highights
+OpenAFS 1.8.10pre1 - Highights
+------------------------------
 
 * Take the readonly volume offline during "vos convertROtoRW"
 
@@ -132,12 +138,41 @@ Highights
 
 * More kernel panic avoidance and removed all strcpy() calls from kernel module
 
+OpenAFS master branch
+---------------------
+
+* Support for newer platform levels upto:
+    * AIX 7.2
+    * Apple macOS 13
+    * Apple Silicon
+    * Linux 6.3 (with patches for Linux 6.4 RC)
+
+* Support for newer compilers (clang-16 ang gcc-13)
 
 OpenAFS master branch
 ---------------------
 
-TODO
+* Operational improvements:
+    * Fixed potential cache inconsistencies for symlink metadata
+    * Fixed pag buildup
+    * Improved fs flush to invalidate Linux's cached dentries
+    * Improved error messages and diagnostics
 
+OpenAFS master branch
+---------------------
+
+* General code cleanup:
+    * Replacement of string functions with safer alternatives,
+      (e.g. strcpy => strlcpy, etc.)
+    * Improved support for larger strings by using allocated memory
+      instead of fixed sized buffers.
+    * Removing obsolete and dead code, consolidating redundant code,
+      etc.
+    * Various fixes for memory leaks, range checking, validating
+      pointers before use, out of memory conditions, potential panics
+      due to memory
+    * Improvements to the autoconf macros and build processes for detecting
+      installed libraries, compiler flags and platform detection
 
 Questions?
 ----------
