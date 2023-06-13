@@ -83,7 +83,7 @@ OpenAFS Releases
 ----------------
 
 * 1.8.9       December 2022
-* 1.8.10pre1  May 2023
+* 1.8.10pre1  June 2023
 
 OpenAFS 1.8.9
 -------------
@@ -94,7 +94,7 @@ Platforms
 
 * FreeBSD 12.3 support
 
-OpenAFS 1.8.9 - Highights
+OpenAFS 1.8.9 - Highlights
 -------------------------
 
 * Reject negative inputs in the filesever FetchData RPC. (Previously, negative
@@ -123,7 +123,7 @@ OpenAFS 1.8.10pre1 - Platforms
 * AIX 7 support
 
 
-OpenAFS 1.8.10pre1 - Highights
+OpenAFS 1.8.10pre1 - Highlights
 ------------------------------
 
 * Take the readonly volume offline during "vos convertROtoRW"
@@ -141,7 +141,7 @@ OpenAFS 1.8.10pre1 - Highights
 OpenAFS master branch
 ---------------------
 
-* Support for newer platform levels upto:
+* Support for newer platform levels up to:
     * AIX 7.2
     * Apple macOS 13
     * Apple Silicon
