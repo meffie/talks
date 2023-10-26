@@ -18,6 +18,11 @@ theme: Madrid
 * Intro to kernel modules
 * Demo code
 
+# Info
+
+* Linux Kernel Module Programming Guide
+* Linux documentation and source code
+
 # What's a Kernel?
 
 * Manages access to hardware (drivers)
@@ -47,13 +52,35 @@ theme: Madrid
 * To unload a module: 'sudo rmmod name'
 * Smart module loader: 'modprobe'
 
+# Module code
+
+* In-tree: Maintained as part of Linux (GPL)
+* Out-of-tree: Maintained outside of Linux (Project specific license)
+* Linux internals change with every release
+
+# Getting started
+
+Debian
+
+    $ sudo apt update
+    $ sudo apt upgrade
+    $ sudo reboot
+    $ sudo apt install kmod linux-headers-$(uname -r)
+
+Fedora
+
+    $ sudo dnf update
+    $ sudo reboot
+    $ sudo dnf install kernel-devel kernel-headers
+
 # Demo Module
 
-Demo module for illustration
+Demo module for illustration:
 
 * Generate random passwords using the kernel
 * Basic char device driver (/dev/password)
 * Show how to use ioctl and sysctl to set password length
+* Requires Linux 6.1 to 6.4
 
 # Demo Module: Part 1
 
