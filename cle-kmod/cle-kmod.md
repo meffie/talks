@@ -20,13 +20,13 @@ theme: Madrid
 
 # What's a Kernel?
 
-* Makes it possible for your programs to run on different systems, now, and in the future
 * Manages access to hardware (drivers)
 * Manages memory
-* Process scheduling, progress and group isolation
+* Filesystems
+* Process scheduling
+* Process (and cgroup) isolation
 * Handles hardware interrupts
 * Provides syscall interface for programs
-* etc
 
 # What's a Kernel Module?
 
@@ -65,12 +65,12 @@ Demo module for illustration
 * Register a char device major number
 * Register a device class
 * Auto-create the /dev/password file
-* Auto-setup /dev/password file permissions
 
 # Demo Module: Part 3
 
 * Initial file operation functions
 * Send "hello world" from the kernel to userspace
+* Auto-setup /dev/password file permissions
 
 # Demo Module: Part 4
 
