@@ -1,9 +1,8 @@
-KVERSION := $(shell uname -r)
-KBUILD   := /lib/modules/$(KVERSION)/build
+KBUILD   := /lib/modules/$(shell uname -r)/build
 SOURCE   := $(shell pwd)
-obj-m    := password.o
+obj-m    := password1.o password2.o password3.o password4.o password5.o password6.o
 
-all:
+modules:
 	make -C $(KBUILD) M=$(SOURCE) modules
 
 clean:
