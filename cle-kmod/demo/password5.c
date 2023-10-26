@@ -14,6 +14,10 @@ static struct cdev password_cdev;
 
 static int password_len = 12;
 
+static const int PASSWORD_LEN_MIN = 1;
+static const int PASSWORD_LEN_MAX = 80;
+static const int PASSWORD_RANDOM_BYTES = 60;
+
 static const unsigned int PASSWORD_GET_LEN = _IOR('p', 0, int);
 static const unsigned int PASSWORD_SET_LEN = _IOW('p', 1, int);
 
@@ -33,8 +37,8 @@ static int password_release(struct inode *inode, struct file *file)
 static ssize_t password_read(struct file *file, char __user *buffer, size_t count, loff_t *offset)
 {
     ssize_t bytes_read = 0;
-    u8 random[60];
-    char password[80];
+    u8 random[PASSWORD_RANDOM_BYTES];
+    char password[PASSWORD_LEN_MAX];
 
     pr_info("password: read: offset=%lld\n", *offset);
 
@@ -80,7 +84,7 @@ static long password_ioctl(struct file *file, unsigned int cmd, unsigned long ar
     case PASSWORD_SET_LEN:
         rc = get_user(tmp, buffer);
         if (rc == 0) {
-            if (tmp < 1 || tmp > 80) {
+            if (tmp < PASSWORD_LEN_MIN || tmp > PASSWORD_LEN_MAX) {
                 rc = -EINVAL;
             } else {
                 password_len = tmp;
