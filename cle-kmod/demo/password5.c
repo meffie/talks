@@ -105,7 +105,7 @@ static const struct file_operations password_fops = {
     .release = password_release,
     .read = password_read,
     .write = password_write,
-    .unlocked_ioctl = password_ioctl
+    .unlocked_ioctl = password_ioctl,
 };
 
 static int password_chmod(struct device *dev, struct kobj_uevent_env *env)

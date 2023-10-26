@@ -70,7 +70,7 @@ static const struct file_operations password_fops = {
     .open = password_open,
     .release = password_release,
     .read = password_read,
-    .write = password_write
+    .write = password_write,
 };
 
 static int password_chmod(struct device *dev, struct kobj_uevent_env *env)
