@@ -111,11 +111,8 @@ Demo module for illustration:
 # Demo Module: Part 6
 
 * Add a sysctl parameter to set and get the generated length
+* Use the kernel API to create an random password string
 
 # Thanks
 
 Questions?
-
-
-* Use the kernel API to create an random password string
-
