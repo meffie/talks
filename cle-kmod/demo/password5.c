@@ -14,12 +14,12 @@ static struct cdev password_cdev;
 
 static int password_len = 12;
 
-static const int PASSWORD_LEN_MIN = 1;
-static const int PASSWORD_LEN_MAX = 80;
-static const int PASSWORD_RANDOM_BYTES = 60;
+#define PASSWORD_LEN_MIN 1
+#define PASSWORD_LEN_MAX 80
+#define PASSWORD_RANDOM_BYTES 60
 
-static const unsigned int PASSWORD_GET_LEN = _IOR('p', 0, int);
-static const unsigned int PASSWORD_SET_LEN = _IOW('p', 1, int);
+#define PASSWORD_GET_LEN _IOR('p', 0, int)
+#define PASSWORD_SET_LEN _IOW('p', 1, int)
 
 /* File operations */
 static int password_open(struct inode *inode, struct file *file)
@@ -118,8 +118,8 @@ static int __init password_init(void)
 {
     pr_info("password: loading module\n");
 
-    pr_info("password: PASSWORD_GET_LEN=0x%x\n", PASSWORD_GET_LEN);
-    pr_info("password: PASSWORD_SET_LEN=0x%x\n", PASSWORD_SET_LEN);
+    pr_info("password: PASSWORD_GET_LEN=0x%x\n", (unsigned int)PASSWORD_GET_LEN);
+    pr_info("password: PASSWORD_SET_LEN=0x%x\n", (unsigned int)PASSWORD_SET_LEN);
 
     alloc_chrdev_region(&password_dev, 0, 1, "password");
     pr_info("password: major:minor is %d:%d\n", MAJOR(password_dev), MINOR(password_dev));

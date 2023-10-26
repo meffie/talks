@@ -13,9 +13,9 @@ static struct cdev password_cdev;
 
 static int password_len = 12;
 
-static const int PASSWORD_LEN_MIN = 1;
-static const int PASSWORD_LEN_MAX = 80;
-static const int PASSWORD_RANDOM_BYTES = 60;
+#define PASSWORD_LEN_MIN 1
+#define PASSWORD_LEN_MAX 80
+#define PASSWORD_RANDOM_BYTES 60
 
 /* File operations */
 static int password_open(struct inode *inode, struct file *file)
